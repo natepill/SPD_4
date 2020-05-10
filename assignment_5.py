@@ -28,11 +28,37 @@ def reverse_LL(curr_node):
 """
 Q2:
 Rotate a given singly-linked list counter-clockwise by k nodes, where k is a given integer.
-Example: If the given linked list is A → B → C → D → E → F and k is 4, nodes should be modified so the list becomes E → F → A → B → C → D.
+Example: If the given linked list is
+A → B → C → D → E → F and k is 4, nodes should be modified so the list becomes
+E → F → A → B → C → D.
+
 Assumptions: k is positive and smaller than n, the length of the linked list.
 """
 
 
+def counter_clock_rotate(node):
+"""
+    Save head of LL
+    Traverse to Kth node from head of list
+    save Kth+1 node
+    point kth node from head to None
+    Traverse From kth+1 node to end
+    Point last node towards saved head of list
+"""
+
+    head = node
+    curr_node = node
+
+    for _ in range(k-1):
+        curr_node = curr_node.next
+
+    new_list_head = curr_node.next
+    curr_node.next = None
+
+    while new_list_head.next is not None:
+        new_list_head = new_list_head.next
+
+    new_list_head.next = head
 
 if __name__ == "__main__":
     node3 = Node("C")
